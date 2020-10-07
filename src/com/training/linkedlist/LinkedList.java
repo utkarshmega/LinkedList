@@ -1,6 +1,6 @@
 package com.training.linkedlist;
 
-public class myNodeTest {
+public class LinkedList {
 
 	public static void main(String[] args) {
 
