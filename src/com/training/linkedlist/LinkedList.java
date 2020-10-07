@@ -105,6 +105,21 @@ public class LinkedList<K> {
 		}
 		temp.setNext(null);
 	}
+	
+	/*
+	 * to search for the specific key in the linked list
+	 */
+	public boolean findKey(K key)
+	{
+		Node<K> node = head;
+		while(node.getNext()!=null)
+		{
+			if(node.getKey() == key) 
+				return true;
+			node = node.getNext();
+		}
+		return false;
+	}
 
 	public static void main(String[] args) {
 
@@ -112,7 +127,8 @@ public class LinkedList<K> {
 		list.addFront(70);
 		list.addFront(30);
 		list.addFront(56);
-		list.deleteNodeAtLast();
+		boolean result = list.findKey(50);
+		System.out.println(result);
 		list.printLinkedList(list.head);
 	}
 
