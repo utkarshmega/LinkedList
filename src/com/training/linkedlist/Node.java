@@ -5,16 +5,20 @@ public class Node<K> {
 	private Node<K> next;
 
 	public Node(K key) {
-		this.key = null;
+		this.key = key;
 		this.next = null;
 	}
 
-	public Node getNext() {
+	public Node<K> getNext() {
 		return next;
 	}
 
-	public void setNext(Node next) {
+	public void setNext(Node<K> next) {
 		this.next = next;
+	}
+	
+	public K getKey() {
+		return key;
 	}
 
 }
