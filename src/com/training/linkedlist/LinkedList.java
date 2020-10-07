@@ -88,6 +88,23 @@ public class LinkedList<K> {
 			return;
 		head = head.getNext();
 	}
+	
+	/**
+	 * Deleting the last node from the linked list
+	 */
+	public void deleteNodeAtLast()
+	{
+		if(head == null) //if the list is empty
+			return;
+		Node<K> node = head.getNext();
+		Node<K> temp = head;
+		while(node.getNext()!=null)
+		{
+			temp = temp.getNext();
+			node = node.getNext();
+		}
+		temp.setNext(null);
+	}
 
 	public static void main(String[] args) {
 
@@ -95,7 +112,7 @@ public class LinkedList<K> {
 		list.addFront(70);
 		list.addFront(30);
 		list.addFront(56);
-		list.deleteNodeAtStart();
+		list.deleteNodeAtLast();
 		list.printLinkedList(list.head);
 	}
 
