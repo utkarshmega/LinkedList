@@ -79,13 +79,21 @@ public class LinkedList<K> {
 			forward = newNode;
 		}
 	}
+	
+	public void deleteNodeAtStart()
+	{
+		if(head==null)
+			return;
+		head = head.getNext();
+	}
 
 	public static void main(String[] args) {
 
 		LinkedList<Integer> list = new LinkedList<>();
 		list.addFront(70);
+		list.addFront(30);
 		list.addFront(56);
-		list.addMiddle(30);
+		list.deleteNodeAtStart();
 		list.printLinkedList(list.head);
 	}
 
