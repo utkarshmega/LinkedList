@@ -15,7 +15,7 @@ public class LinkedList<K> {
 	/**
 	 * To add new node to the linked list
 	 */
-	public void add(K key) {
+	public void addLast(K key) {
 		Node<K> newNode = new Node<K>(key);
 		if (head == null) {
 			head = newNode;
@@ -31,9 +31,9 @@ public class LinkedList<K> {
 	public static void main(String[] args) {
 
 		LinkedList<Integer> list = new LinkedList<>();
-		list.add(56);
-		list.add(30);
-		list.add(70);
+		list.addLast(56);
+		list.addLast(30);
+		list.addLast(70);
 		list.printLinkedList(list.head);
 	}
 
