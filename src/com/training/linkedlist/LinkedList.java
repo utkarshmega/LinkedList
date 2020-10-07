@@ -28,6 +28,43 @@ public class LinkedList<K> {
 	}
 
 	/**
+	 * to find the length of the linked list and return an integer value
+	 */
+	public int length(Node<K> node) {
+		int len = 0;
+		while (node.getNext() == null) {
+			len++;
+			node = node.getNext();
+		}
+		return len;
+	}
+
+	/**
+	 * To add new node to the linked list in between two nodes
+	 */
+	public void addMiddle(K key) {
+		Node<K> newNode = new Node<K>(key);
+		if (head == null) {
+			head = newNode;
+			forward = newNode;
+		}
+
+		else {
+			Node<K> temp = head;
+			int len = length(head);
+			if (len % 2 == 0)
+				len--;
+			len /= 2;
+			while (len > 0) {
+				temp = temp.getNext();
+				len--;
+			}
+			newNode.setNext(temp.getNext());
+			temp.setNext(newNode);
+		}
+	}
+
+	/**
 	 * To add new node to the linked list
 	 */
 	public void addLast(K key) {
@@ -47,8 +84,8 @@ public class LinkedList<K> {
 
 		LinkedList<Integer> list = new LinkedList<>();
 		list.addFront(70);
-		list.addFront(30);
 		list.addFront(56);
+		list.addMiddle(30);
 		list.printLinkedList(list.head);
 	}
 
