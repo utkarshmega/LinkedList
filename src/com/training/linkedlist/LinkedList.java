@@ -79,10 +79,12 @@ public class LinkedList<K> {
 			forward = newNode;
 		}
 	}
-	
-	public void deleteNodeAtStart()
-	{
-		if(head==null)
+
+	/**
+	 * Deleting the node at the starting position
+	 */
+	public void deleteNodeAtStart() {
+		if (head == null)
 			return;
 		head = head.getNext();
 	}
