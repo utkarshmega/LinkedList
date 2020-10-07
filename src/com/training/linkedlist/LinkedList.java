@@ -15,6 +15,21 @@ public class LinkedList<K> {
 	/**
 	 * To add new node to the linked list
 	 */
+	public void addFront(K key) {
+		Node<K> newNode = new Node<K>(key);
+		if (head == null) {
+			head = newNode;
+		}
+
+		else {
+			newNode.setNext(head);
+			head = newNode;
+		}
+	}
+
+	/**
+	 * To add new node to the linked list
+	 */
 	public void addLast(K key) {
 		Node<K> newNode = new Node<K>(key);
 		if (head == null) {
@@ -31,9 +46,9 @@ public class LinkedList<K> {
 	public static void main(String[] args) {
 
 		LinkedList<Integer> list = new LinkedList<>();
-		list.addLast(56);
-		list.addLast(30);
-		list.addLast(70);
+		list.addFront(70);
+		list.addFront(30);
+		list.addFront(56);
 		list.printLinkedList(list.head);
 	}
 
