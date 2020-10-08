@@ -184,6 +184,17 @@ public class LinkedList<K> {
 			System.out.println("Node deleted");
 		}
 	}
+	
+	public <K extends Comparable<K>> void addNodeInSorted(K value)
+	{
+		Node<K> temp = head;
+		while(true)
+		{
+			if(value.compareTo(temp.getKey())>0) {
+				
+			}
+		}
+	}
 
 	public static void main(String[] args) {
 
@@ -194,8 +205,6 @@ public class LinkedList<K> {
 		list.addValueAtTargetPosition(30, 40);
 		list.printLinkedList(list.head);
 		list.deleteTargetNode(30);
-		list.deleteTargetNode(70);
-		list.deleteTargetNode(56);
 		list.printLinkedList(list.head);
 	}
 
