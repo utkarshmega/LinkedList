@@ -120,6 +120,34 @@ public class LinkedList<K> {
 		}
 		return false;
 	}
+	
+	public boolean addValueAtTargetPosition(K target, K value)
+	{
+		int flag=0;
+		Node<K> temp = head;
+		Node<K> tmp = temp.getNext();
+		Node<K> newNode = new Node<>(value);
+		if(head == null)
+			return false;
+		while(temp.getKey()==target || temp.getNext()!=null)
+		{
+			if(temp.getKey()==target) {
+				tmp = temp.getNext();
+				flag=1;
+				break;
+			}
+			temp = temp.getNext();
+			
+		}
+		if(flag==1) {
+			temp.setNext(newNode);
+			newNode.setNext(tmp);
+			return true;
+		}
+		else
+			return false;
+		
+	}
 
 	public static void main(String[] args) {
 
@@ -127,8 +155,7 @@ public class LinkedList<K> {
 		list.addFront(70);
 		list.addFront(30);
 		list.addFront(56);
-		boolean result = list.findKey(50);
-		System.out.println(result);
+		list.addValueAtTargetPosition(30, 40);
 		list.printLinkedList(list.head);
 	}
 

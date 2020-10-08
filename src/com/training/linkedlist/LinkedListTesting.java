@@ -14,7 +14,12 @@ public class LinkedListTesting {
 	{
 		obj.addFront(70);
 		obj.addFront(30);
-		obj.addFront(56);		
+		obj.addFront(56);
+	}
+	
+	@Test
+	public void testInsertionAtTarget() {
+		Assert.assertEquals(true, obj.addValueAtTargetPosition(20, 40));
 	}
 
 	@Test
