@@ -162,7 +162,11 @@ public class LinkedList<K> {
 		Node<K> temp = head;
 		if(head == null)
 			return;
-		while(temp.getNext()!=null || temp.getNext().getKey()!=target)
+		if(head.getKey()==target) {
+			head = head.getNext();
+			flag=1;
+		}
+ 		while(temp.getNext()!=null || temp.getNext().getKey()!=target)
 		{
 			if(temp.getNext().getKey()==target)
 			{
@@ -171,6 +175,8 @@ public class LinkedList<K> {
 				break;
 			}
 			temp = temp.getNext();
+			if(temp.getNext()==null)
+				break;
 		}
 		if(flag==0)
 			System.out.println("Target Node didn't found");
@@ -188,7 +194,10 @@ public class LinkedList<K> {
 		list.addValueAtTargetPosition(30, 40);
 		list.printLinkedList(list.head);
 		list.deleteTargetNode(30);
+		list.deleteTargetNode(70);
+		list.deleteTargetNode(56);
 		list.printLinkedList(list.head);
 	}
 
 }
+
