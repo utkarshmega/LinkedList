@@ -89,124 +89,118 @@ public class LinkedList<K> {
 			return;
 		head = head.getNext();
 	}
-	
+
 	/**
 	 * Deleting the last node from the linked list
 	 */
-	public void deleteNodeAtLast()
-	{
-		if(head == null) //if the list is empty
+	public void deleteNodeAtLast() {
+		if (head == null) // if the list is empty
 			return;
 		Node<K> node = head.getNext();
 		Node<K> temp = head;
-		while(node.getNext()!=null)
-		{
+		while (node.getNext() != null) {
 			temp = temp.getNext();
 			node = node.getNext();
 		}
 		temp.setNext(null);
 	}
-	
+
 	/*
 	 * to search for the specific key in the linked list
 	 */
-	public boolean findKey(K key)
-	{
+	public boolean findKey(K key) {
 		Node<K> node = head;
-		while(node.getNext()!=null)
-		{
-			if(node.getKey() == key) 
+		while (node.getNext() != null) {
+			if (node.getKey() == key)
 				return true;
 			node = node.getNext();
 		}
 		return false;
 	}
-	
+
 	/**
-	 * inserting node at specified target position 
+	 * inserting node at specified target position
 	 */
-	public boolean addValueAtTargetPosition(K target, K value)
-	{
-		int flag=0;
+	public boolean addValueAtTargetPosition(K target, K value) {
+		int flag = 0;
 		Node<K> temp = head;
 		Node<K> tmp = temp.getNext();
 		Node<K> newNode = new Node<>(value);
-		if(head == null)
+		if (head == null)
 			return false;
-		while(temp.getKey()==target || temp.getNext()!=null)
-		{
-			if(temp.getKey()==target) {
+		while (temp.getKey() == target || temp.getNext() != null) {
+			if (temp.getKey() == target) {
 				tmp = temp.getNext();
-				flag=1;
+				flag = 1;
 				break;
 			}
 			temp = temp.getNext();
-			
+
 		}
-		if(flag==1) {
+		if (flag == 1) {
 			temp.setNext(newNode);
 			newNode.setNext(tmp);
 			return true;
-		}
-		else
+		} else
 			return false;
-		
+
 	}
-	
+
 	/**
 	 * deleting the target node from the linked list
 	 */
-	public void deleteTargetNode(K target)
-	{
-		int flag=0;
+	public void deleteTargetNode(K target) {
+		int flag = 0;
 		Node<K> temp = head;
-		if(head == null)
+		if (head == null)
 			return;
-		if(head.getKey()==target) {
+		if (head.getKey() == target) {
 			head = head.getNext();
-			flag=1;
+			flag = 1;
 		}
- 		while(temp.getNext()!=null || temp.getNext().getKey()!=target)
-		{
-			if(temp.getNext().getKey()==target)
-			{
-				flag=1;
+		while (temp.getNext() != null || temp.getNext().getKey() != target) {
+			if (temp.getNext().getKey() == target) {
+				flag = 1;
 				temp.setNext(temp.getNext().getNext());
 				break;
 			}
 			temp = temp.getNext();
-			if(temp.getNext()==null)
+			if (temp.getNext() == null)
 				break;
 		}
-		if(flag==0)
+		if (flag == 0)
 			System.out.println("Target Node didn't found");
 		else {
 			System.out.println("Node deleted");
 		}
 	}
-	
-	public <K extends Comparable<K>> void addNodeInSorted(K value)
-	{
+
+	public void addNodeInSorted(K value) {
 		Node<K> temp = head;
-		while(true)
-		{
-			if(value.compareTo(temp.getKey())>0) {
-				
+		Node<K> newNode = new Node<>(value);
+		if (head == null)
+			head = newNode;
+		else if ((int) newNode.getKey() < (int) head.getKey()) {
+			newNode.setNext(head);
+			head = newNode;
+		} else {
+			while (temp.getNext() != null && (int) temp.getNext().getKey() < (int) newNode.getKey()) {
+				temp = temp.getNext();
 			}
+			newNode.setNext(temp.getNext());
+			temp.setNext(newNode);
 		}
 	}
 
 	public static void main(String[] args) {
 
 		LinkedList<Integer> list = new LinkedList<>();
-		list.addFront(70);
-		list.addFront(30);
-		list.addFront(56);
-		list.addValueAtTargetPosition(30, 40);
-		list.printLinkedList(list.head);
-		list.deleteTargetNode(30);
+		list.addNodeInSorted(70);
+		list.addNodeInSorted(30);
+		list.addNodeInSorted(56);
+		list.addNodeInSorted(35);
+		list.addNodeInSorted(100);
 		list.printLinkedList(list.head);
 	}
 
 }
-
