@@ -10,6 +10,7 @@ public class LinkedList<K> {
 			System.out.print(node.getKey() + "-->");
 			node = node.getNext();
 		}
+		System.out.println();
 	}
 
 	/**
@@ -121,6 +122,9 @@ public class LinkedList<K> {
 		return false;
 	}
 	
+	/**
+	 * inserting node at specified target position 
+	 */
 	public boolean addValueAtTargetPosition(K target, K value)
 	{
 		int flag=0;
@@ -148,6 +152,32 @@ public class LinkedList<K> {
 			return false;
 		
 	}
+	
+	/**
+	 * deleting the target node from the linked list
+	 */
+	public void deleteTargetNode(K target)
+	{
+		int flag=0;
+		Node<K> temp = head;
+		if(head == null)
+			return;
+		while(temp.getNext()!=null || temp.getNext().getKey()!=target)
+		{
+			if(temp.getNext().getKey()==target)
+			{
+				flag=1;
+				temp.setNext(temp.getNext().getNext());
+				break;
+			}
+			temp = temp.getNext();
+		}
+		if(flag==0)
+			System.out.println("Target Node didn't found");
+		else {
+			System.out.println("Node deleted");
+		}
+	}
 
 	public static void main(String[] args) {
 
@@ -156,6 +186,8 @@ public class LinkedList<K> {
 		list.addFront(30);
 		list.addFront(56);
 		list.addValueAtTargetPosition(30, 40);
+		list.printLinkedList(list.head);
+		list.deleteTargetNode(30);
 		list.printLinkedList(list.head);
 	}
 
